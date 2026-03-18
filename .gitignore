@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Project Specific
+private_key.pem
+audit_log.jsonl
+*.pth
+*.log
+test_results/
+.ipynb_checkpoints/
+
+# Data
+*.csv
+*.xlsx

@@ -1,0 +1,13 @@
+torch
+pandas
+numpy
+vnstock
+scikit-learn
+matplotlib
+requests
+fastapi
+uvicorn[standard]
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+slowapi
