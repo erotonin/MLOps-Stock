@@ -1,0 +1,40 @@
+{
+  "symbol": "VCB",
+  "run_type": "stacking_ensemble",
+  "artifacts": [
+    "VCB_scaler_x.pkl",
+    "VCB_scaler_y.pkl",
+    "VCB_tft_model.pt",
+    "VCB_lgbm_model.pkl",
+    "VCB_meta_learner.pkl",
+    "VCB_artifact_manifest.json"
+  ],
+  "features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "sma_10",
+    "sma_20",
+    "rsi",
+    "macd",
+    "macd_signal",
+    "bb_upper",
+    "bb_lower",
+    "log_return"
+  ],
+  "window_size": 60,
+  "tft_best_val_loss": 1.9136493802070618,
+  "meta_train_samples": 43,
+  "meta_test_samples": 30,
+  "artifact_hashes": {
+    "VCB_scaler_x.pkl": "c8564e8be22897ad8efc0c932ecd7ef7742e1bb43440a4a5e7102fd226df43e4",
+    "VCB_scaler_y.pkl": "1943791f25f90c9e5ddd00b6328db0d46c887150c37312402d0704ad6614e461",
+    "VCB_tft_model.pt": "9808d538cfba88483430a55ba9032d77199667fd497eb4c7bd5e8dcc2b762f55",
+    "VCB_lgbm_model.pkl": "f73c816b7b95ee51cba16c2ef305a53cb3b7fc8e52f5d2684698f6081526f487",
+    "VCB_meta_learner.pkl": "95aea9329df26f5fd2f297e6b87a4a55b563123b535881aae8d060131d5aa9eb"
+  },
+  "directional_acc": 56.666666666666664,
+  "residual_q90": 3.4062288581568794
+}

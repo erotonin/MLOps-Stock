@@ -1,0 +1,40 @@
+{
+  "symbol": "HPG",
+  "run_type": "stacking_ensemble",
+  "artifacts": [
+    "HPG_scaler_x.pkl",
+    "HPG_scaler_y.pkl",
+    "HPG_tft_model.pt",
+    "HPG_lgbm_model.pkl",
+    "HPG_meta_learner.pkl",
+    "HPG_artifact_manifest.json"
+  ],
+  "features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "sma_10",
+    "sma_20",
+    "rsi",
+    "macd",
+    "macd_signal",
+    "bb_upper",
+    "bb_lower",
+    "log_return"
+  ],
+  "window_size": 60,
+  "tft_best_val_loss": 0.1447012722492218,
+  "meta_train_samples": 43,
+  "meta_test_samples": 30,
+  "artifact_hashes": {
+    "HPG_scaler_x.pkl": "f2ec79ea301720a97f21d8f130419bf0d6416606ad5ef510044d7300b8d9c852",
+    "HPG_scaler_y.pkl": "da1e802c8c3fee8ce5f93c5ec44da91472b7d4f2f86f608bd9b2d601c53467a7",
+    "HPG_tft_model.pt": "ccd12ca44f797dd5e15a0da09ca79877b0777272ad0bebaaa513de5f1bae5437",
+    "HPG_lgbm_model.pkl": "bfcc0f6344563a50228d5e0ac9aec52e619256e37375254fbeda04231367c1d0",
+    "HPG_meta_learner.pkl": "6688f3fb0e3c2ee6a90cf7a964a1e6e7ebfb742b5d00fa762ef433da26070891"
+  },
+  "directional_acc": 70.0,
+  "residual_q90": 0.8785767768002679
+}

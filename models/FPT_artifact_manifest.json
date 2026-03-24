@@ -1,0 +1,40 @@
+{
+  "symbol": "FPT",
+  "run_type": "stacking_ensemble",
+  "artifacts": [
+    "FPT_scaler_x.pkl",
+    "FPT_scaler_y.pkl",
+    "FPT_tft_model.pt",
+    "FPT_lgbm_model.pkl",
+    "FPT_meta_learner.pkl",
+    "FPT_artifact_manifest.json"
+  ],
+  "features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "sma_10",
+    "sma_20",
+    "rsi",
+    "macd",
+    "macd_signal",
+    "bb_upper",
+    "bb_lower",
+    "log_return"
+  ],
+  "window_size": 60,
+  "tft_best_val_loss": 0.25293226602176827,
+  "meta_train_samples": 43,
+  "meta_test_samples": 30,
+  "artifact_hashes": {
+    "FPT_scaler_x.pkl": "6e5c65fbf45c93f558e159805902e5a929c7001431371d8a01c652ec1cee72be",
+    "FPT_scaler_y.pkl": "632a11ba46bd42044ef0b48ebdc73a0e6bff1792b8015c4a9f6abad15cf7248b",
+    "FPT_tft_model.pt": "5d9115329465a0cb2facc1ea04c82e4c177c917dbeb25342915553607160d547",
+    "FPT_lgbm_model.pkl": "6e8444000e45cf5c757c4237777588b5fc37acb8ec13cbe1c7366528ad28d7a3",
+    "FPT_meta_learner.pkl": "a2287952d0abaf33f718d8531f3d600498aed07f6913ffd5b78071c4a0037a5b"
+  },
+  "directional_acc": 56.666666666666664,
+  "residual_q90": 0.47059450384126894
+}

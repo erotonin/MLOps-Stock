@@ -21,3 +21,6 @@ test_results/
 # Data
 *.csv
 *.xlsx
+
+# Ignore Vietnamese code explanation files
+giang_code/

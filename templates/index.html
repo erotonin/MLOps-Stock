@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOps Stock Ensemble | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(255, 256, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --text-primary: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mlops-badge {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-blue);
+        }
+
+        .symbol {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .prediction {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trend-up {
+            color: var(--accent-green);
+        }
+
+        .btn {
+            background: var(--accent-blue);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .decision {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .badge-buy { color: #22c55e; font-weight: 600; }
+        .badge-sell { color: #f97316; font-weight: 600; }
+        .badge-hold { color: #facc15; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Stock Ensemble Dashboard</h1>
+                <p style="opacity: 0.6;">Hybrid Ensemble Architecture | T+3 Forecasting (VN Settlement Aligned)</p>
+            </div>
+            <div class="mlops-badge">
+                <span class="status-dot"></span> System Live: Monitoring Active
+            </div>
+        </div>
+
+        <div class="grid">
+            {% for symbol, data in predictions.items() %}
+            <div class="card">
+                <div class="symbol">
+                    {{ symbol }} <span style="font-size: 0.8rem; opacity: 0.5;">HOSE</span>
+                </div>
+                <div class="price">
+                    {{ data.current_price }} <span style="font-size: 1rem; font-weight: 400;">VND</span>
+                </div>
+                <div class="prediction">
+                    Predict T+3:
+                    {% if data.trend == "UP" %}
+                        <span class="trend-up">↑ {{ data.predicted_price }}</span>
+                    {% else %}
+                        <span style="color: #fb7185;">↓ {{ data.predicted_price }}</span>
+                    {% endif %}
+                </div>
+                <div class="decision">
+                    Decision:
+                    {% if data.action == "BUY" %}
+                        <span class="badge-buy">BUY</span>
+                    {% elif data.action == "SELL" %}
+                        <span class="badge-sell">SELL</span>
+                    {% else %}
+                        <span class="badge-hold">HOLD</span>
+                    {% endif %}
+                    <br>
+                    Expected Return (net): {{ data.expected_return_pct }}%<br>
+                    Confidence: {{ (data.confidence * 100) | round(2) }}%
+                </div>
+                <div style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 20px;">
+                    Hybrid Model: TFT + LightGBM Ensemble<br>
+                    Drift Status: <span style="color: #22c55e;">Stable</span><br>
+                    Note: {{ data.reason }}
+                </div>
+                <button class="btn">View Analytics</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

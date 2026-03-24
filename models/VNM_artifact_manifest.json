@@ -1,0 +1,40 @@
+{
+  "symbol": "VNM",
+  "run_type": "stacking_ensemble",
+  "artifacts": [
+    "VNM_scaler_x.pkl",
+    "VNM_scaler_y.pkl",
+    "VNM_tft_model.pt",
+    "VNM_lgbm_model.pkl",
+    "VNM_meta_learner.pkl",
+    "VNM_artifact_manifest.json"
+  ],
+  "features": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "sma_10",
+    "sma_20",
+    "rsi",
+    "macd",
+    "macd_signal",
+    "bb_upper",
+    "bb_lower",
+    "log_return"
+  ],
+  "window_size": 60,
+  "tft_best_val_loss": 0.7881588687499365,
+  "meta_train_samples": 40,
+  "meta_test_samples": 28,
+  "artifact_hashes": {
+    "VNM_scaler_x.pkl": "77f433e3006744878d9bec43b2285c61667a75f4999e174b4c9ba6755af72b38",
+    "VNM_scaler_y.pkl": "481c40f7627358ce65aa0f2861ac8e1ebf1660d789c3737e5e1a2383bbaa9d0d",
+    "VNM_tft_model.pt": "965a2cba86886625833fd941a32af9906d6b17b6c1e16f77008870e7ee10fcc2",
+    "VNM_lgbm_model.pkl": "5adaa374b02bf8dbe060f30d36f884c0b66298107c7f21ff260516c0ea7a8228",
+    "VNM_meta_learner.pkl": "19e21a9c19a2645dd7dc3607b379718fb96dd423612538e26c5fc80f52fbd889"
+  },
+  "directional_acc": 53.57142857142857,
+  "residual_q90": 1.0538146863956765
+}
